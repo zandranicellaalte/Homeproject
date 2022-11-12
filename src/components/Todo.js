@@ -1,4 +1,7 @@
 import React from "react";
+import { Box, ListItem, ListItemText, IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import CheckIcon from "@mui/icons-material/Check";
 
 const Todo = ({ todoText, todo, todos, setTodos }) => {
     const handlerCheck = () => {
@@ -20,18 +23,41 @@ const Todo = ({ todoText, todo, todos, setTodos }) => {
         setTodos(todos.filter((item) => item.id !== todo.id));
     };
 
+    const styles = {
+        inputContainer: {
+            color: "var(--main-bg-secondary-color)",
+            backgroundColor: "#145da015",
+            width: "470px",
+            borderRadius: "5px",
+        },
+        input: {
+            color: "var(--main-bg-secondary-color)",
+        },
+        inputText: {
+            color: "var(--main-text-primary-color)",
+            margin: "0 5px",
+        },
+        icon: {
+            color: "var(--main-bg-secondary-color)",
+        },
+    };
+
     return (
-        <div className="todo-container">
-            <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
-                {todoText}
-            </li>
-            <button onClick={handlerCheck}>
-                <i className="fas fa-check"></i>
-            </button>
-            <button onClick={handlerDelete}>
-                <i className="fas fa-trash"></i>
-            </button>
-        </div>
+        <Box>
+            <ListItem
+                secondaryAction={
+                    <IconButton onClick={handlerDelete}>
+                        <DeleteIcon sx={styles.icon} />
+                    </IconButton>
+                }
+                sx={styles.inputContainer}
+            >
+                <IconButton onClick={handlerCheck}>
+                    <CheckIcon sx={styles.icon} />
+                </IconButton>
+                <ListItemText primary={todoText} sx={styles.inputText} />
+            </ListItem>
+        </Box>
     );
 };
 

@@ -1,4 +1,7 @@
 import React from "react";
+import Button from "@mui/material/Button";
+import { Box, TextField } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 const TodoForm = ({ todos, setTodos, setInputValue, inputValue }) => {
     const todoHandler = (e) => {
@@ -14,20 +17,41 @@ const TodoForm = ({ todos, setTodos, setInputValue, inputValue }) => {
         setInputValue("");
     };
 
+    const styles = {
+        input: {
+            border: "1px solid var(--main-bg-secondary-color)",
+            borderRadius: "5px",
+        },
+    };
+
     return (
-        <div>
-            <input value={inputValue} type="text" onChange={todoHandler} />
-            <button type="submit" onClick={submitHandler}>
-                <i className="fas fa-plus-square"></i>
-            </button>
-            <div>
-                <select>
-                    <option value="all">Alla</option>
-                    <option value="klar">Avklarade</option>
-                    <option value="ejklar">Behöver göras!</option>
-                </select>
-            </div>
-        </div>
+        <Box className="container">
+            <TextField
+                value={inputValue}
+                onChange={todoHandler}
+                id="outlined-basic"
+                label="What do you need to do?"
+                variant="outlined"
+                sx={styles.input}
+                InputLabelProps={{
+                    style: { color: "white" },
+                }}
+                InputProps={{
+                    style: {
+                        color: "white",
+                        width: "400px",
+                    },
+                }}
+            />
+            <Button
+                type="submit"
+                onClick={submitHandler}
+                variant="contained"
+                sx={{ width: "5px", height: "58px", marginLeft: "5px" }}
+            >
+                <AddIcon />
+            </Button>
+        </Box>
     );
 };
 
