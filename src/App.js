@@ -8,10 +8,17 @@ function App() {
     const [inputValue, setInputValue] = useState("");
     const [todos, setTodos] = useState([]);
 
+    const styles = {
+        titel: {
+            marginRight: "280px",
+            marginBottom: "5px",
+        },
+    };
+
     return (
         <Box className="App">
             <Box className="App-header">
-                <Typography variant="h3" gutterBottom>
+                <Typography sx={styles.titel} variant="h3">
                     Todo List
                 </Typography>
                 <TodoForm

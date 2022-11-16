@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { Box, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -21,6 +21,11 @@ const TodoForm = ({ todos, setTodos, setInputValue, inputValue }) => {
         input: {
             border: "1px solid var(--main-bg-secondary-color)",
             borderRadius: "5px",
+        },
+        button: {
+            width: "5px",
+            height: "58px",
+            marginLeft: "5px",
         },
     };
 
@@ -47,7 +52,8 @@ const TodoForm = ({ todos, setTodos, setInputValue, inputValue }) => {
                 type="submit"
                 onClick={submitHandler}
                 variant="contained"
-                sx={{ width: "5px", height: "58px", marginLeft: "5px" }}
+                disabled={!inputValue}
+                sx={styles.button}
             >
                 <AddIcon />
             </Button>
